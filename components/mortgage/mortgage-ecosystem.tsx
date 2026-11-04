@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import assets from './assets.json'
 import s from './mortgage.module.css'
 
@@ -28,8 +28,25 @@ const crms = [
 ]
 
 export function MortgagePartners() {
-  const rail = useRef<HTMLDivElement>(null)
-  return <section className={s.partners} aria-labelledby="partners-title"><div className={s.partnerHeading}><div><span className={s.eyebrow}>Trusted across the Studio Escrow community</span><h2 id="partners-title">Good company to be in.</h2></div><div className={s.railControls}><button type="button" aria-label="Previous partner logos" onClick={()=>rail.current?.scrollBy({left:-500,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>←</button><button type="button" aria-label="Next partner logos" onClick={()=>rail.current?.scrollBy({left:500,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>→</button></div></div><div ref={rail} className={s.partnerRail} tabIndex={0} role="region" aria-label="Partner logos; scroll to explore">{assets.filter(a=>a.partner).map((a,i)=><figure key={a.logo}><img src={a.logo} alt={partnerNames[i]} width={180} height={80} loading="lazy" /><figcaption>{partnerNames[i]}</figcaption></figure>)}</div><p className={s.note}>A community spanning real estate, mortgage and service industries.</p></section>
+  const [paused, setPaused] = useState(false)
+  const partners = assets.filter(a => a.partner).map((a, i) => ({ ...a, name: partnerNames[i] }))
+  const rows = [partners, [...partners.slice(5), ...partners.slice(0, 5)]]
+  return <section className={s.partners} aria-labelledby="partners-title">
+    <div className={s.partnerHeading}>
+      <div><span className={s.eyebrow}>Trusted across the Studio Escrow community</span><h2 id="partners-title">Good company to be in.</h2></div>
+      <button className={s.marqueeToggle} type="button" aria-pressed={paused} aria-controls="partner-marquees" onClick={() => setPaused(value => !value)}>{paused ? 'Resume scrolling' : 'Pause scrolling'}</button>
+    </div>
+    <div id="partner-marquees" className={s.marquees} data-paused={paused}>
+      {rows.map((row, index) => <div key={index} className={s.partnerRail} tabIndex={index === 0 ? 0 : undefined} role={index === 0 ? 'region' : undefined} aria-label={index === 0 ? 'Company logos; focus to pause scrolling' : undefined} aria-hidden={index === 1 ? true : undefined}>
+        <div className={s.partnerTrack} data-direction={index === 0 ? 'right' : 'left'}>
+          {[0, 1].map(copy => <div key={copy} className={s.partnerGroup} aria-hidden={copy === 1 ? true : undefined}>
+            {row.map(partner => <figure key={partner.logo}><img src={partner.logo} alt="" width={180} height={80} loading="lazy" /><figcaption>{partner.name}</figcaption></figure>)}
+          </div>)}
+        </div>
+      </div>)}
+    </div>
+    <p className={s.note}>A community spanning real estate, mortgage and service industries.</p>
+  </section>
 }
 
 export function MortgageIntegrations() {
