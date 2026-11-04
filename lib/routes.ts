@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 export const SITE_URL = 'https://studioescrow.cloud'
 
 /** Version both assets together to prevent stale styles from mismatching the menu markup. */
-const MEGA_MENU_VERSION = '5'
+const MEGA_MENU_VERSION = '6'
 export const MEGA_MENU_SRC = `/assets/mega-menu/mega-menu.js?v=${MEGA_MENU_VERSION}`
 export const MEGA_MENU_CSS = `/assets/mega-menu/mega-menu.css?v=${MEGA_MENU_VERSION}`
 export const SITE_NAME = 'Studio Escrow'
