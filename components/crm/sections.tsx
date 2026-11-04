@@ -15,24 +15,7 @@ const Cite = ({ n }: { n: number }) => (
   </sup>
 )
 
-export function Hero() {
-  return (
-    <ScrollProgress as="section" mode="exit" className={styles.hero} labelledBy="crm-title">
-      <div className={styles.heroStage}>
-        <div className={styles.heroShapes} aria-hidden="true">
-          <img className={styles.heroArtwork} src="/features/crm-workspace.png" alt="" width={1536} height={1024} fetchPriority="high" />
-        </div>
-        <h1 id="crm-title" className={styles.heroTitle}>
-          <span className={styles.heroWord}>CRM &amp;</span> <span className={styles.heroWord}>Automations</span>
-        </h1>
-      </div>
-      <p className={styles.heroIntro}>
-        Every lead, conversation and deal lives in one record. Workflows on top of it follow up, route and remind for
-        you, so nothing waits on a busy inbox.
-      </p>
-    </ScrollProgress>
-  )
-}
+export { CRMHero as Hero } from './crm-hero'
 
 function Marker({ x, y, at }: { x: number; y: number; at: number }) {
   return (
@@ -44,7 +27,7 @@ function Marker({ x, y, at }: { x: number; y: number; at: number }) {
 
 export function WhatPanel() {
   return (
-    <section className={`${styles.panel} ${styles.panelWhat}`} aria-labelledby="what-title">
+    <section id="crm-overview" className={`${styles.panel} ${styles.panelWhat}`} aria-labelledby="what-title">
       <svg className={styles.panelLine} viewBox="0 0 1600 1000" preserveAspectRatio="none" aria-hidden="true">
         <path
           d="M0 424C40 440 60 448 80 448M480 448C600 448 640 500 690 560C740 620 790 648 880 648L1560 648C1585 648 1600 652 1600 656"
