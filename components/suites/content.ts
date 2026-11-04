@@ -1,11 +1,11 @@
 export const suites = {
   medical: {
-    name: 'Medical', eyebrow: 'For practices. For people.', tagline: 'More patient care. Less busywork.',
-    intro: 'Your patient CRM, AI receptionist, scheduling and follow-up, connected. A practice operating system built and managed for you, so your team can focus on the person in front of them.',
+    name: 'Medical', eyebrow: 'The healthcare marketing ecosystem', tagline: 'Attract. Book. Care. Bring patients back.',
+    intro: 'Turn interest into appointments and first visits into lasting relationships. Connect your marketing, AI receptionist, patient CRM and clinical tools in one managed ecosystem, without replacing the software your practice trusts.',
     image: '/mortgage-suite/intro.png', imageAlt: 'Connected glass spheres representing a connected care system',
     audience: ['Medical practices', 'Med spas', 'Hormone clinics', 'Wellness centers'],
-    heading: 'A connected practice. A more human experience.',
-    description: 'From the first inquiry to the next visit, give every patient a clear next step. Bring your front desk, marketing and patient relationships together without replacing the clinical tools you rely on.',
+    heading: 'One patient journey. Not a dozen disconnected tools.',
+    description: 'Attract patients through ads, search and social. Help them book with fast responses and simple scheduling. Connect appointment activity to follow-up, reviews and recall. Your team gets the full picture, while patients get a consistent experience from first click to next visit.',
     features: [
       ['Patient CRM', 'Keep patient relationships, referral sources and custom practice pipelines in one place. HIPAA-ready configurations and a BAA support your compliance requirements.'],
       ['AI receptionist', 'Support after-hours inquiries, answer routine questions and help patients book appointments, with handoffs to your team.'],
