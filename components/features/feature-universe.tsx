@@ -10,7 +10,11 @@ export function FeatureIcon({ index, className = '' }: { index: number; classNam
 }
 const openingBrands = ['Stripe', 'Anthropic Claude', 'Salesforce', 'Slack', 'Shopify', 'Zapier', 'HubSpot', 'ChatGPT / OpenAI']
 const orbit = [...openingBrands.map(name => integrations.find(tool => tool[0] === name)!), ...integrations.filter(tool => !openingBrands.includes(tool[0]))]
-const positions = [[-430,-230,-10],[-160,-290,6],[230,-270,-6],[450,-90,9],[365,195,-7],[65,285,8],[-255,240,-8],[-455,40,6]]
+const logosPerWave = 20
+const positions = Array.from({ length: logosPerWave }, (_, index) => {
+  const angle = (index / logosPerWave) * Math.PI * 2 - Math.PI / 2
+  return [Math.cos(angle) * 475, Math.sin(angle) * 410, index % 2 ? 5 : -5]
+})
 
 export function FeatureUniverse() {
   const root = useRef<HTMLElement>(null)
@@ -35,7 +39,7 @@ export function FeatureUniverse() {
   return <section ref={root} className={s.flight} aria-label="Explore the Studio Escrow feature universe">
     <div className={s.flightStage}>
       <div className={s.flightTop}><span>STUDIO ESCROW / THE PLATFORM</span><button onClick={()=>setPaused(!paused)} aria-pressed={paused}>{paused ? <Play size={14}/> : <Pause size={14}/>} {paused ? 'Resume depth' : 'Pause depth'}</button></div>
-      <div className={s.orbit} aria-hidden="true">{orbit.map(([name,slug,category],i)=><div key={name} className={s.orbitCard} style={{'--x':`${positions[i%8][0]}px`,'--y':`${positions[i%8][1]}px`,'--r':`${positions[i%8][2]}deg`,'--wave':Math.floor(i/8)} as CSSProperties}>{slug ? <img src={logoUrl(slug)} alt="" width={70} height={70} decoding="async" style={slug === 'openai' ? {background:'var(--f-ink)',borderRadius:16,padding:10} : undefined}/> : <FeatureIcon index={category==='Developer'?1:4}/>}<span>{name}</span><span className={s.orbitCategory}>{category}</span><ArrowUpRight size={15}/></div>)}</div>
+      <div className={s.orbit} aria-hidden="true">{orbit.map(([name,slug,category],i)=><div key={name} className={s.orbitCard} style={{'--x':`${positions[i%logosPerWave][0]}px`,'--y':`${positions[i%logosPerWave][1]}px`,'--r':`${positions[i%logosPerWave][2]}deg`,'--wave':Math.floor(i/logosPerWave)} as CSSProperties}>{slug ? <img src={logoUrl(slug)} alt="" width={70} height={70} decoding="async" style={slug === 'openai' ? {background:'var(--f-ink)',borderRadius:16,padding:10} : undefined}/> : <FeatureIcon index={category==='Developer'?1:4}/>}<span>{name}</span><span className={s.orbitCategory}>{category}</span><ArrowUpRight size={15}/></div>)}</div>
       <div className={s.heroCopy}><span className={s.eyebrow}>A whole universe. One workspace.</span><h1>Less friction.<br/><span>More possibility.</span></h1><p>Every conversation, workflow and next big idea.<br className={s.desktopBreak}/> Finally, working together.</p><a href="#feature-explorer" className={s.primary}>Explore your possibilities <ArrowDown size={17}/></a><span className={s.micro}>Built around your business. Not the other way around.</span></div>
       <div className={s.flightBottom}><span>CRM · MARKETING · AI · AUTOMATION</span><a href="#feature-explorer">Scroll to explore <ArrowDown size={16}/></a></div>
     </div>
