@@ -1,20 +1,13 @@
-import { footerLinks, href } from '@/lib/routes'
+import Script from 'next/script'
+import { SITE_FOOTER_CSS, SITE_FOOTER_JS, getSiteFooterHtml } from '@/lib/mirror'
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const html = await getSiteFooterHtml()
   return (
-    <footer className="ma3IoW_footer">
-      <div className="ma3IoW_container">
-        <div className="ma3IoW_footerBottom">
-          <span>© 2026 Studio Escrow</span>
-          <nav aria-label="Footer" style={{ flexWrap: 'wrap', columnGap: 24, rowGap: 12 }}>
-            {footerLinks.map((link) => (
-              <a key={link.id} href={href(link.id)}>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </div>
-    </footer>
+    <>
+      <link rel="stylesheet" href={SITE_FOOTER_CSS} precedence="default" />
+      <div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: html }} />
+      <Script src={SITE_FOOTER_JS} strategy="afterInteractive" />
+    </>
   )
 }
