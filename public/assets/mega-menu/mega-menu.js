@@ -38,7 +38,7 @@
     root.innerHTML = `<a class="se-skip" href="#${esc(main?.id || 'main-content')}">Skip to content</a>
       <div class="se-bar"><a class="se-brand" href="/" aria-label="Studio Escrow home"><span class="se-mark" aria-hidden="true"></span>Studio Escrow</a>
       <span class="se-bar-note">Your business. Better connected.</span>
-      <button class="se-explore-trigger" type="button" aria-expanded="false" aria-controls="se-explore"><span class="se-trigger-label">Explore</span><span class="se-toggle-mark" aria-hidden="true"><i></i><i></i></span></button></div>
+      <button class="se-explore-trigger" type="button" aria-expanded="false" aria-controls="se-explore"><span class="se-trigger-label">Menu</span><span class="se-toggle-mark" aria-hidden="true"><i></i><i></i></span></button></div>
       <div class="se-backdrop" hidden></div>
       <div class="se-explore" id="se-explore" hidden><div class="se-explore-top"><span class="se-kicker">Make yourself at home</span><a ${attrs('https://the.studioescrow.cloud/')} class="se-sign-in">Log in <span aria-hidden="true">→</span>${tabHint('https://the.studioescrow.cloud/')}</a></div>
       <nav class="se-explore-layout" aria-label="Main navigation"><div class="se-categories" role="tablist" aria-label="Explore Studio Escrow" aria-orientation="vertical">${groups.map((g, i) => `<button type="button" role="tab" id="se-tab-${g.id}" aria-controls="se-content-${g.id}" aria-selected="${!i}" tabindex="${i ? '-1' : '0'}"><span>${g.label}</span><span aria-hidden="true">→</span></button>`).join('')}</div><div class="se-panels">${groups.map(renderGroup).join('')}</div></nav>
@@ -56,7 +56,7 @@
       if (open === isOpen) return
       isOpen = open
       trigger.setAttribute('aria-expanded', String(open))
-      trigger.querySelector('.se-trigger-label').textContent = open ? 'Close' : 'Explore'
+      trigger.querySelector('.se-trigger-label').textContent = open ? 'Close menu' : 'Menu'
       panel.hidden = !open
       backdrop.hidden = !open
       root.classList.toggle('has-open', open)
