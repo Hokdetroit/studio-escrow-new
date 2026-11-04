@@ -5,6 +5,7 @@ import {
   Band,
   ChartPanel,
   ContactBubbles,
+  ConnectedWorkspace,
   Hero,
   Statement,
   Stats,
@@ -25,6 +26,7 @@ export default function CrmAutomationsPage() {
         <WhatPanel />
         <WhyPanel />
       </HorizontalScroll>
+      <ConnectedWorkspace />
       <Stats />
       <Statement />
       <WorkflowRoadmap />

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { href } from '@/lib/routes'
+import { logoUrl } from '@/components/features/feature-data'
 import { FOLLOW_UP_ROWS, HBR_SOURCE } from './content'
 import styles from './crm.module.css'
 import { CountUp, InView } from './in-view'
@@ -19,8 +20,7 @@ export function Hero() {
     <ScrollProgress as="section" mode="exit" className={styles.hero} labelledBy="crm-title">
       <div className={styles.heroStage}>
         <div className={styles.heroShapes} aria-hidden="true">
-          <div className={styles.emboss} />
-          <div className={`${styles.emboss} ${styles.embossSmall}`} />
+          <img className={styles.heroArtwork} src="/features/crm-workspace.png" alt="" width={1536} height={1024} fetchPriority="high" />
         </div>
         <h1 id="crm-title" className={styles.heroTitle}>
           <span className={styles.heroWord}>CRM &amp;</span> <span className={styles.heroWord}>Automations</span>
@@ -181,6 +181,20 @@ export function Statement() {
       </svg>
     </ScrollProgress>
   )
+}
+
+export function ConnectedWorkspace() {
+  return <section className={styles.visualStory} aria-labelledby="crm-connected-title">
+    <img src="/features/crm-team.png" alt="Two business professionals collaborating over a laptop in a sunlit office" width={1536} height={1024} loading="lazy" />
+    <div className={styles.visualCopy}>
+      <span className={styles.visualEyebrow}>Connected tools. More human conversations.</span>
+      <h2 id="crm-connected-title">Less switching tabs.<br/>More moving forward.</h2>
+      <p>Keep the tools your team knows. Connect conversations, bookings and payments to the same customer story, so the next person always knows where to pick up.</p>
+      <div className={styles.logoRow}>{[['Slack','slack'],['Stripe','stripe'],['HubSpot','hubspot'],['Zapier','zapier']].map(([name,slug])=><div key={slug}><img src={logoUrl(slug)} alt="" width={32} height={32} loading="lazy"/><span>{name}</span></div>)}</div>
+      <p className={styles.integrationNote}>Integration options depend on your plan, connected accounts and workflow configuration.</p>
+      <a href="/features#connected">Explore how everything connects →</a>
+    </div>
+  </section>
 }
 
 export function TimingIntro() {

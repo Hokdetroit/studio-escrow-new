@@ -54,6 +54,7 @@ export function LeadsChart() {
           LEADS HANDLED / MONTH
         </text>
 
+        <path d={`${C1_PATH} L${C1.x1} ${C1.bottom} L${C1.x0} ${C1.bottom} Z`} className={styles.chartArea} />
         <path d={C1_PATH} pathLength={1} className={`${styles.draw} ${styles.lineBlue}`} />
 
         {STEPS.map((s, i) => {
@@ -104,6 +105,7 @@ export function ResponseChart() {
       <figcaption className={styles.chartHead}>
         <span className={styles.chartTitle}>Automated follow-up closes the response gap.</span>
         <span className={styles.chartSub}>Illustrative: share of new leads still waiting for a first reply.</span>
+        <span className={styles.chartLegend}><span className={styles.lineGrey}>Manual inbox</span><span className={styles.lineInk}>Shared inbox + reminders</span><span className={styles.lineBlue}>Studio Escrow workflow</span></span>
       </figcaption>
       <svg viewBox="0 0 1200 560" className={styles.chartSvg} role="img" aria-label="Illustrative chart: half of leads in a manual inbox wait about 18 hours for a reply, about 6 hours with reminders, and under a minute with a Studio Escrow workflow.">
         <line x1={C2.x0} y1={C2.top - 30} x2={C2.x0} y2={C2.bottom + 60} className={styles.axis} />
