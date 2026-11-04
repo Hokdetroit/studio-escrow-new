@@ -66,6 +66,14 @@ export const routes = {
     status: 'built',
     source: 'app',
   },
+  aiStudio: {
+    path: '/ai-studio',
+    name: 'AI Studio',
+    title: 'AI Studio | Studio Escrow',
+    description: 'Explore Ask AI, no-code tools, business knowledge and connected agent workflows. See how AI Studio brings your CRM and automation together.',
+    status: 'built',
+    source: 'app',
+  },
   medicalSuite: {
     path: '/medical-suite',
     name: 'Medical Suite',
