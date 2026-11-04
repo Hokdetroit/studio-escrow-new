@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { INDEXING_ENABLED, SITE_URL, builtPaths, canonicalUrl, href, resolvePath } from '@/lib/routes'
+import { INDEXING_ENABLED, MEGA_MENU_SRC, SITE_URL, builtPaths, canonicalUrl, href, resolvePath } from '@/lib/routes'
 
 const MIRROR_DIR = path.join(process.cwd(), 'mirror', 'pages')
 
@@ -23,6 +23,7 @@ export function rewriteMirroredHtml(html: string, pagePath: string): string {
     .replace(LIVE_LINK, (match, p: string) => (builtPaths.includes(p) ? p : match))
     .replace(RELATIVE_PAGE_LINK, (match, p: string) => (builtPaths.includes(p) ? match : `${SITE_URL}${p}`))
     .replace(HIDDEN_HOME_SERVICES_LINK, `<a href="${resolvePath('/home-services')}" class="footer-link hide">Home Services`)
+    .replaceAll('/assets/mega-menu/mega-menu.js', MEGA_MENU_SRC)
 
   const headTags = [
     `<script>window.__SE_BUILT_PATHS__=${JSON.stringify(builtPaths)};window.__SE_SITE__=${JSON.stringify(SITE_URL)}</script>`,

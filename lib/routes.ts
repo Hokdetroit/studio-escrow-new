@@ -6,6 +6,9 @@ import type { Metadata } from 'next'
  */
 
 export const SITE_URL = 'https://studioescrow.cloud'
+
+/** Bump the version whenever mega-menu.js changes so browsers drop cached copies. */
+export const MEGA_MENU_SRC = '/assets/mega-menu/mega-menu.js?v=2'
 export const SITE_NAME = 'Studio Escrow'
 
 export const INDEXING_ENABLED = process.env.INDEXING_ENABLED === 'true'

@@ -24,6 +24,11 @@ const nextConfig = {
         source: '/assets/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      // Hand-edited scripts must revalidate; later rules override the immutable header above.
+      {
+        source: '/assets/:dir(mega-menu|page-transition)/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }],
+      },
     ]
   },
 }
