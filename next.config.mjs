@@ -1,11 +1,3 @@
-const mirroredPages = {
-  '/': 'index',
-  '/features': 'features',
-  '/medical-suite': 'medical-suite',
-  '/mortgage-suite': 'mortgage-suite',
-  '/pricing': 'pricing',
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -14,13 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async rewrites() {
-    return {
-      beforeFiles: Object.entries(mirroredPages).map(([source, page]) => ({
-        source,
-        destination: `/pages/${page}.html`,
-      })),
-    }
+  skipTrailingSlashRedirect: true,
+  outputFileTracingIncludes: {
+    '/*': ['./mirror/pages/**'],
   },
   async headers() {
     return [

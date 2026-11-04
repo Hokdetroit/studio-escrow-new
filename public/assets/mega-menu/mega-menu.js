@@ -1,5 +1,8 @@
 (() => {
-  const SITE = 'https://studioescrow.cloud'
+  // Built paths come from lib/routes.ts (injected into <head>); anything else resolves to the live site.
+  const SITE = window.__SE_SITE__ || 'https://studioescrow.cloud'
+  const BUILT = new Set(window.__SE_BUILT_PATHS__ || [])
+  const u = (path) => (BUILT.has(path) ? path : `${SITE}${path}`)
   const ICONS = {
     users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
     inbox: '<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
@@ -25,18 +28,18 @@
         {
           title: 'Grow & convert',
           links: [
-            { label: 'CRM & Automations', desc: 'Pipelines, contacts, and multi-step workflows', href: `${SITE}/crm-automations`, icon: 'users' },
-            { label: 'Unified Inbox', desc: 'SMS, email, and social in one thread', href: `${SITE}/unified-inbox`, icon: 'inbox' },
-            { label: 'Websites & Funnels', desc: 'Pages that route leads into your CRM', href: `${SITE}/website-funnel-builder`, icon: 'layout' },
-            { label: 'Reputation', desc: 'Request, monitor, and reply to reviews', href: `${SITE}/reputation`, icon: 'star' },
+            { label: 'CRM & Automations', desc: 'Pipelines, contacts, and multi-step workflows', href: u('/crm-automations'), icon: 'users' },
+            { label: 'Unified Inbox', desc: 'SMS, email, and social in one thread', href: u('/unified-inbox'), icon: 'inbox' },
+            { label: 'Websites & Funnels', desc: 'Pages that route leads into your CRM', href: u('/website-funnel-builder'), icon: 'layout' },
+            { label: 'Reputation', desc: 'Request, monitor, and reply to reviews', href: u('/reputation'), icon: 'star' },
           ],
         },
         {
           title: 'AI & knowledge',
           links: [
-            { label: 'AI Studio', desc: 'Content, reporting, and workflow assistance', href: `${SITE}/ai-studio`, icon: 'sparkles' },
-            { label: 'AI Agents', desc: 'Reception, follow-up, and conversations', href: `${SITE}/ai-agents`, icon: 'bot' },
-            { label: 'Integrations', desc: 'Connect the tools you already use', href: `${SITE}/integrations`, icon: 'plug' },
+            { label: 'AI Studio', desc: 'Content, reporting, and workflow assistance', href: u('/ai-studio'), icon: 'sparkles' },
+            { label: 'AI Agents', desc: 'Reception, follow-up, and conversations', href: u('/ai-agents'), icon: 'bot' },
+            { label: 'Integrations', desc: 'Connect the tools you already use', href: u('/integrations'), icon: 'plug' },
           ],
         },
       ],
@@ -44,7 +47,7 @@
         eyebrow: 'Overview',
         title: 'See every feature',
         desc: 'Tour the CRM, messaging, AI, scheduling, and automation tools in one place.',
-        href: '/features',
+        href: u('/features'),
         image: '/images/social-scheduling.png',
         cta: 'Explore features',
       },
@@ -56,17 +59,17 @@
         {
           title: 'By industry',
           links: [
-            { label: 'Medical Suite', desc: 'Scheduling and secure communications, with a BAA', href: '/medical-suite', icon: 'heart' },
-            { label: 'Real Estate', desc: 'Lead routing and nurture for agents and teams', href: `${SITE}/real-estate`, icon: 'home' },
-            { label: 'Mortgage Suite', desc: 'Scale plan plus a done-for-you buildout', href: '/mortgage-suite', icon: 'landmark' },
-            { label: 'Agencies & Consultants', desc: 'Run client accounts from one dashboard', href: `${SITE}/agencies-consultants`, icon: 'briefcase' },
+            { label: 'Medical Suite', desc: 'Scheduling and secure communications, with a BAA', href: u('/medical-suite'), icon: 'heart' },
+            { label: 'Real Estate', desc: 'Lead routing and nurture for agents and teams', href: u('/real-estate'), icon: 'home' },
+            { label: 'Mortgage Suite', desc: 'Scale plan plus a done-for-you buildout', href: u('/mortgage-suite'), icon: 'landmark' },
+            { label: 'Agencies & Consultants', desc: 'Run client accounts from one dashboard', href: u('/agencies-consultants'), icon: 'briefcase' },
           ],
         },
         {
           title: 'Get set up',
           links: [
-            { label: 'Done-for-you setup', desc: 'Branding, website, and workflows built for you', href: `${SITE}/schedule-demo`, icon: 'wrench' },
-            { label: 'Compare plans', desc: 'Growth, Scale, and industry suites', href: '/pricing', icon: 'grid' },
+            { label: 'Done-for-you setup', desc: 'Branding, website, and workflows built for you', href: u('/do-it-for-you'), icon: 'wrench' },
+            { label: 'Compare plans', desc: 'Growth, Scale, and industry suites', href: u('/pricing'), icon: 'grid' },
           ],
         },
       ],
@@ -74,11 +77,11 @@
         eyebrow: 'Not sure where to start?',
         title: 'Talk to our team',
         desc: 'Get a walkthrough tailored to your industry and the tools you use today.',
-        href: `${SITE}/schedule-demo`,
+        href: u('/schedule-demo'),
         cta: 'Book a demo',
       },
     },
-    { id: 'pricing', label: 'Pricing', href: '/pricing' },
+    { id: 'pricing', label: 'Pricing', href: u('/pricing') },
     {
       id: 'resources',
       label: 'Resources',
@@ -87,20 +90,20 @@
         {
           title: 'Learn',
           links: [
-            { label: 'Knowledge Base', desc: 'Guides and how-to articles', href: `${SITE}/knowledge-base`, icon: 'book' },
-            { label: 'All features', desc: 'The complete platform overview', href: '/features', icon: 'grid' },
-            { label: 'Integrations', desc: 'Supported apps and connections', href: `${SITE}/integrations`, icon: 'plug' },
+            { label: 'Knowledge Base', desc: 'Guides and how-to articles', href: u('/knowledge-base'), icon: 'book' },
+            { label: 'All features', desc: 'The complete platform overview', href: u('/features'), icon: 'grid' },
+            { label: 'Integrations', desc: 'Supported apps and connections', href: u('/integrations'), icon: 'plug' },
           ],
         },
         {
           title: 'Company',
           plain: true,
           links: [
-            { label: 'About', href: `${SITE}/about` },
-            { label: 'Careers', href: `${SITE}/careers` },
-            { label: 'Contact', href: `${SITE}/contact` },
-            { label: 'Privacy Policy', href: `${SITE}/privacy` },
-            { label: 'Terms of Service', href: `${SITE}/terms` },
+            { label: 'About', href: u('/about') },
+            { label: 'Careers', href: u('/careers') },
+            { label: 'Contact', href: u('/contact') },
+            { label: 'Privacy Policy', href: u('/privacy') },
+            { label: 'Terms of Service', href: u('/terms') },
           ],
         },
       ],
@@ -108,7 +111,7 @@
   ]
 
   const LOGIN = 'https://the.studioescrow.cloud/'
-  const DEMO = `${SITE}/schedule-demo`
+  const DEMO = u('/schedule-demo')
 
   const esc = (value) => String(value).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
   const isExternal = (href) => /^https?:/.test(href)
