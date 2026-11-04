@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 export const SITE_URL = 'https://studioescrow.cloud'
 
 /** Version both assets together to prevent stale styles from mismatching the menu markup. */
-const MEGA_MENU_VERSION = '4'
+const MEGA_MENU_VERSION = '5'
 export const MEGA_MENU_SRC = `/assets/mega-menu/mega-menu.js?v=${MEGA_MENU_VERSION}`
 export const MEGA_MENU_CSS = `/assets/mega-menu/mega-menu.css?v=${MEGA_MENU_VERSION}`
 export const SITE_NAME = 'Studio Escrow'
@@ -89,6 +89,14 @@ export const routes = {
     name: 'Mortgage Suite',
     title: 'Mortgage Suite | Studio Escrow',
     description: 'Connect lead capture, CRM, AI-assisted response, long-term nurture and referral follow-up with a done-for-you Mortgage Suite.',
+    status: 'built',
+    source: 'app',
+  },
+  realEstateSuite: {
+    path: '/real-estate-suite',
+    name: 'Real Estate Suite',
+    title: 'Real Estate Suite | Studio Escrow',
+    description: 'Connect buyer and seller leads, real estate CRM, AI-assisted follow-up, listing campaigns and past-client referrals in one done-for-you workspace.',
     status: 'built',
     source: 'app',
   },
