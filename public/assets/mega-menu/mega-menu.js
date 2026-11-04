@@ -1,7 +1,7 @@
 (() => {
   // Built paths come from lib/routes.ts (injected into <head>); anything else resolves to the live site.
   const SITE = window.__SE_SITE__ || 'https://studioescrow.cloud'
-  const u = path => (window.__SE_BUILT_PATHS__ || []).includes(path) ? path : `${SITE}${path}`
+  const u = path => path === '/crm-automations' || (window.__SE_BUILT_PATHS__ || []).includes(path) ? path : `${SITE}${path}`
   const esc = value => String(value).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c])
   const external = url => /^https?:/.test(url)
   const attrs = url => `href="${esc(url)}"${external(url) ? ' target="_blank" rel="noopener noreferrer"' : ''}`
