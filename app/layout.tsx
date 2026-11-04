@@ -8,8 +8,7 @@ import styles from '@/components/site/site.module.css'
 import { INDEXING_ENABLED, MEGA_MENU_CSS, MEGA_MENU_SRC, SITE_NAME, SITE_URL, builtPaths } from '@/lib/routes'
 
 /*
- * Root layout for the React-built pages. The existing designed pages (/, /features,
- * /pricing) are served as mirrored HTML by route handlers and do not use this layout,
+ * Root layout for the React-built pages. The existing designed pages (/, /pricing) are served as mirrored HTML by route handlers and do not use this layout,
  * so the same stylesheets and scripts they load are linked here.
  */
 

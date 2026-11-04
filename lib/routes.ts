@@ -44,10 +44,9 @@ export const routes = {
     name: 'Features',
     title: 'Features | Studio Escrow',
     description:
-      'Explore Studio Escrow CRM, communications, automation, AI, websites, scheduling, and business tools in one connected platform.',
+      'Explore Studio Escrow CRM, marketing, AI and automation in an interactive feature universe. Discover custom Medical Suite EMRs, patient portals, dashboards and integrations.',
     status: 'built',
-    source: 'mirror',
-    mirrorFile: 'features',
+    source: 'app',
   },
   pricing: {
     path: '/pricing',
