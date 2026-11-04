@@ -57,6 +57,15 @@ export const routes = {
     source: 'mirror',
     mirrorFile: 'pricing',
   },
+  crmAutomations: {
+    path: '/crm-automations',
+    name: 'CRM & Automations',
+    title: 'CRM & Automations | Studio Escrow',
+    description:
+      'Contacts, pipelines and every conversation in one CRM, with multi-step workflows that capture, nurture, convert and retain customers automatically.',
+    status: 'built',
+    source: 'app',
+  },
   scheduleDemo: {
     path: '/schedule-demo',
     name: 'Book a Demo',
