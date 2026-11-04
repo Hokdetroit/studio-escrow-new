@@ -70,6 +70,9 @@
           links: [
             { label: 'Done-for-you setup', desc: 'Branding, website, and workflows built for you', href: u('/do-it-for-you'), icon: 'wrench' },
             { label: 'Compare plans', desc: 'Growth, Scale, and industry suites', href: u('/pricing'), icon: 'grid' },
+            { label: 'Enterprise Pricing', desc: 'Options for larger teams and custom needs', href: u('/enterprise-pricing'), icon: 'briefcase' },
+            { label: 'Savings Calculator', desc: 'Estimate your potential software savings', href: u('/calculator'), icon: 'grid' },
+            { label: 'Compare platforms', desc: 'Explore how Studio Escrow compares', href: u('/compare'), icon: 'layout' },
           ],
         },
       ],
@@ -91,6 +94,8 @@
           title: 'Learn',
           links: [
             { label: 'Knowledge Base', desc: 'Guides and how-to articles', href: u('/knowledge-base'), icon: 'book' },
+            { label: 'Case Studies', desc: 'Explore customer workflows and use cases', href: u('/case-studies'), icon: 'briefcase' },
+            { label: 'FAQ', desc: 'Answers to common platform questions', href: u('/faq'), icon: 'book' },
             { label: 'All features', desc: 'The complete platform overview', href: u('/features'), icon: 'grid' },
             { label: 'Integrations', desc: 'Supported apps and connections', href: u('/integrations'), icon: 'plug' },
           ],
@@ -102,6 +107,7 @@
             { label: 'About', href: u('/about') },
             { label: 'Careers', href: u('/careers') },
             { label: 'Contact', href: u('/contact') },
+            { label: 'Compliance & Security', href: u('/compliance-security') },
             { label: 'Privacy Policy', href: u('/privacy') },
             { label: 'Terms of Service', href: u('/terms') },
           ],
