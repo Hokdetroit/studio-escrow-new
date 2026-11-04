@@ -66,6 +66,22 @@ export const routes = {
     status: 'built',
     source: 'app',
   },
+  medicalSuite: {
+    path: '/medical-suite',
+    name: 'Medical Suite',
+    title: 'Medical Suite | Studio Escrow',
+    description: 'Connect patient CRM, AI receptionist, scheduling, intake and follow-up with a managed, HIPAA-ready Medical Suite for your practice.',
+    status: 'built',
+    source: 'app',
+  },
+  mortgageSuite: {
+    path: '/mortgage-suite',
+    name: 'Mortgage Suite',
+    title: 'Mortgage Suite | Studio Escrow',
+    description: 'Connect lead capture, CRM, AI-assisted response, long-term nurture and referral follow-up with a done-for-you Mortgage Suite.',
+    status: 'built',
+    source: 'app',
+  },
   scheduleDemo: {
     path: '/schedule-demo',
     name: 'Book a Demo',
