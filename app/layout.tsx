@@ -5,7 +5,7 @@ import { RevealObserver } from '@/components/site/reveal-observer'
 import { SiteFooter } from '@/components/site/site-footer'
 import { SiteHeader } from '@/components/site/site-header'
 import styles from '@/components/site/site.module.css'
-import { INDEXING_ENABLED, MEGA_MENU_SRC, SITE_NAME, SITE_URL, builtPaths } from '@/lib/routes'
+import { INDEXING_ENABLED, MEGA_MENU_CSS, MEGA_MENU_SRC, SITE_NAME, SITE_URL, builtPaths } from '@/lib/routes'
 
 /*
  * Root layout for the React-built pages. The existing designed pages (/, /features,
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" />
-        <link rel="stylesheet" href="/assets/mega-menu/mega-menu.css" />
+        <link rel="stylesheet" href={MEGA_MENU_CSS} />
         <link rel="stylesheet" href="/assets/page-transition/page-transition.css" />
       </head>
       <body className="antialiased">

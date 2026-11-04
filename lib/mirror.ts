@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { INDEXING_ENABLED, MEGA_MENU_SRC, SITE_URL, builtPaths, canonicalUrl, href, resolvePath } from '@/lib/routes'
+import { INDEXING_ENABLED, MEGA_MENU_CSS, MEGA_MENU_SRC, SITE_URL, builtPaths, canonicalUrl, href, resolvePath } from '@/lib/routes'
 const MIRROR_DIR = path.join(process.cwd(), 'mirror', 'pages')
 const FOOTER_PARTIAL = path.join(process.cwd(), 'mirror', 'partials', 'site-footer.html')
 
@@ -47,7 +47,9 @@ const HOME_FOOTER_SECTION = /<section id="footer"[\s\S]*?<\/section>/
 const HYDRATED_FOOTER = /<footer class="(?:W_qXAG|ma3IoW)_footer"/
 
 export function rewriteMirroredHtml(html: string, pagePath: string, footerHtml: string): string {
-  let out = rewriteLinks(html).replaceAll('/assets/mega-menu/mega-menu.js', MEGA_MENU_SRC)
+  let out = rewriteLinks(html)
+    .replace(/\/assets\/mega-menu\/mega-menu\.js(?:\?[^"'\s<>]*)?/g, MEGA_MENU_SRC)
+    .replace(/\/assets\/mega-menu\/mega-menu\.css(?:\?[^"'\s<>]*)?/g, MEGA_MENU_CSS)
 
   const headTags = [
     `<script>window.__SE_BUILT_PATHS__=${JSON.stringify(builtPaths)};window.__SE_SITE__=${JSON.stringify(SITE_URL)}</script>`,
